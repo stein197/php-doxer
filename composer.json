@@ -24,5 +24,11 @@
 			"email": "nil20122013@gmail.com"
 		}
 	],
-	"require": {}
+	"require": {},
+	"scripts": {
+		"test": "phpunit"
+	},
+	"scripts-descriptions": {
+		"test": "Run unit tests"
+	}
 }
