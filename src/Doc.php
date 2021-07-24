@@ -45,7 +45,7 @@
 					$isTagArea = true;
 					if ($curTagString)
 						$this->tags[] = new Tag($curTagString);
-					$curTagString = $ln;
+					$curTagString .= $ln;
 				} else {
 					if ($isTagArea) {
 						$curTagString .= " $ln";
@@ -54,6 +54,8 @@
 					}
 				}
 			}
+			if ($curTagString)
+				$this->tags[] = new Tag($curTagString);
 			$this->description = str_replace(" \n", "\n", ltrim($this->description)) ?: null;
 			$this->tags = $this->tags ?: null;
 		}
