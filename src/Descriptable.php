@@ -3,7 +3,7 @@
 
 	trait Descriptable {
 
-		protected ?string $description;
+		protected ?string $description = null;
 
 		/**
 		 * Returns comment description
