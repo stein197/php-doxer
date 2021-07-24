@@ -10,13 +10,17 @@
 			return [
 				'Empty' => [
 					'/**  */',
-					['desc' => null,
-					'tags' => null]
+					[
+						'desc' => null,
+						'tags' => null
+					]
 				],
 				'One-lined description' => [
 					'/** Description */',
-					['desc' => 'Description',
-					'tags' => null]
+					[
+						'desc' => 'Description',
+						'tags' => null
+					]
 				],
 				'Multilined one-line description' => [
 					<<<DOC
@@ -24,8 +28,10 @@
 					 * Description
 					 */
 					DOC,
-					['desc' => 'Description',
-					'tags' => null]
+					[
+						'desc' => 'Description',
+						'tags' => null
+					]
 				],
 				'Multilined description' => [
 					<<<DOC
@@ -35,8 +41,10 @@
 					 * with new line.
 					 */
 					DOC,
-					['desc' => 'Description. Another string with new line.',
-					'tags' => null]
+					[
+						'desc' => 'Description. Another string with new line.',
+						'tags' => null
+					]
 				],
 				'One-lined single tag' => [
 					'/** @tag */',
