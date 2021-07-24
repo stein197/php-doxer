@@ -9,10 +9,10 @@
 	 * ```
 	 * @package Stein197\Doxer
 	 */
-	class Doc {
+	class Doc extends Parser {
 
-		/** Docblock description */
-		private ?string $description = '';
+		use Descriptable;
+
 		/** Docblock tags */
 		private ?array $tags = [];
 
@@ -28,14 +28,6 @@
 		}
 
 		/**
-		 * Returns docblock description
-		 * @return null|string Description
-		 */
-		public function getDescription(): ?string {
-			return $this->description;
-		}
-
-		/**
 		 * Returns docblock tags in order they declared.
 		 * @param null|string $name Returns tags with specified name.
 		 * @return null|array Array of tags or null if not found.
@@ -44,7 +36,7 @@
 			return $name ? (array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) ?: null) : $this->tags;
 		}
 
-		private function parse(string $doc): void {
+		protected function parse(string $doc): void {
 			$lines = self::lines($doc);
 			$isTagArea = false;
 			$curTagString = '';
