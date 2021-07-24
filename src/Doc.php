@@ -29,11 +29,10 @@
 
 		/**
 		 * Returns docblock tags in order they declared.
-		 * @param null|string $name Returns tags with specified name.
 		 * @return null|Tag[] Array of tags or null if not found.
 		 */
-		public function getTags(?string $name = null): ?array {
-			return $name ? (array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) ?: null) : $this->tags;
+		public function getTags(): ?array {
+			return $this->tags;
 		}
 
 		protected function parse(string $doc): void {
