@@ -13,7 +13,7 @@
 
 		use Descriptable;
 
-		/** Docblock tags */
+		/** @var Tag[] $tags Docblock tags */
 		private ?array $tags = [];
 
 		/**
@@ -30,7 +30,7 @@
 		/**
 		 * Returns docblock tags in order they declared.
 		 * @param null|string $name Returns tags with specified name.
-		 * @return null|array Array of tags or null if not found.
+		 * @return null|Tag[] Array of tags or null if not found.
 		 */
 		public function getTags(?string $name = null): ?array {
 			return $name ? (array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) ?: null) : $this->tags;
