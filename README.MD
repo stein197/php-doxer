@@ -28,7 +28,7 @@ foreach ($tags as $tag) {
 	}
 }
 ```
-Each docblock comment can have tags which start with `@` sign and each tag can have an array of properties and an option description. The next list shows which tags are parsed in a "special" way, i.e. tags that can have properties:
+Each docblock comment can have tags which start with `@` sign and each tag can have an array of properties and an optional description. The next list shows which tags are parsed in a "special" way, i.e. tags that can have properties:
 - @author `<name>` `[<email>]`
 - @deprecated `[<version>]` `[<description>]`
 - @license `[<url>]` `[<description>]`
@@ -40,7 +40,11 @@ Each docblock comment can have tags which start with `@` sign and each tag can h
 - @var `<type>` `[<name>]` `[<description>]`
 - @uses `<uri>` `[<description>]`
 - @throws `<type>` `[<description>]`
-If tag does not match any of these, the it will parsed as `@tag [<description>]`
+
+If tag does not match any of these, the it will parsed as `@tag [<description>]`. So for example if tag "@return string A string" is parsed, it's properties will be only `type`:
+```php
+(new Stein197\Doxer\Doc('/** @return string A string */'))->getTags()[0]->getProperties(); // Return ['type' => 'string']
+```
 
 > NOTE! If tag accepts name parameter which will start with `@` sign (@param for example), then after retrieving `name` property the name will be retrieved without leading "$":
 ```php
