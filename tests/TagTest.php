@@ -43,7 +43,7 @@ class TagTest extends BaseCase {
 		public function dataRegisteredTags(): array {
 			return [
 				// @author
-				[
+				'Inline @author' => [
 					'/** @author Name Surname <email> */',
 					[
 						[
@@ -56,7 +56,7 @@ class TagTest extends BaseCase {
 						]
 					]
 				],
-				[
+				'Multiline @author' => [
 					<<<DOC
 					/**
 					 * @author Name Surname <email>
@@ -82,7 +82,7 @@ class TagTest extends BaseCase {
 					]
 				],
 				// @deprecated
-				[
+				'Inline @deprecated' => [
 					'/** @deprecated 1.2-beta Description */',
 					[
 						[
@@ -94,7 +94,7 @@ class TagTest extends BaseCase {
 						]
 					]
 				],
-				[
+				'Multiline @deprecated' => [
 					<<<DOC
 					/**
 					 * @deprecated
@@ -125,7 +125,7 @@ class TagTest extends BaseCase {
 					]
 				],
 				// @license
-				[
+				'Inline @license' => [
 					'/** @license https://domain.com GPL */',
 					[
 						[
@@ -137,7 +137,7 @@ class TagTest extends BaseCase {
 						]
 					]
 				],
-				[
+				'Multiline @license' => [
 					<<<DOC
 					/**
 					 * @license GPL
