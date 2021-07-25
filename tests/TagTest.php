@@ -325,6 +325,42 @@ class TagTest extends BaseCase {
 						],
 					]
 				],
+				'Inline @since' => [
+					'/** @since 1.0.0 Description */',
+					[
+						[
+							'name' => 'since',
+							'desc' => 'Description',
+							'props' => [
+								'version' => '1.0.0'
+							]
+						],
+					]
+				],
+				'Multiline @since' => [
+					<<<DOC
+					/**
+					 * @since 1.0.0
+					 * @since 1.0.0 Description
+					 */
+					DOC,
+					[
+						[
+							'name' => 'since',
+							'desc' => null,
+							'props' => [
+								'version' => '1.0.0'
+							]
+						],
+						[
+							'name' => 'since',
+							'desc' => 'Description',
+							'props' => [
+								'version' => '1.0.0'
+							]
+						],
+					]
+				],
 			];
 		}
 	}
