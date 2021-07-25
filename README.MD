@@ -42,6 +42,11 @@ Each docblock comment can have tags which start with `@` sign and each tag can h
 - @throws `<type>` `[<description>]`
 If tag does not match any of these, the it will parsed as `@tag [<description>]`
 
+> NOTE! If tag accepts name parameter which will start with `@` sign (@param for example), then after retrieving `name` property the name will be retrieved without leading "$":
+```php
+echo (new Stein197\Doxer\Doc('/** @param Type $name */'))->getTags()[0]->getProperties()['name']; // "name"
+```
+
 ## Tests
 To run unit tests call the `test` composer script:
 ```
