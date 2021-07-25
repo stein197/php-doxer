@@ -13,9 +13,6 @@
 
 		use Descriptable;
 
-		// TODO: @example
-		// TODO: @method [[static] return type] [name]([[type] [parameter]<, ...>]) [<description>]
-		// TODO: @property[<-read|-write>] [Type] [name] [<description>]
 		private const RULES = [
 			'author' => '/^(?<name>.+?)(?:\s+<(?<email>.+)>)?$/', // @author <name> [<email>]
 			'deprecated' => '/^(?<version>\d[^\s]+)?(?:\s*(?<description>.+))?$/', // @deprecated [<version>]
