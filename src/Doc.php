@@ -45,7 +45,7 @@
 					$isTagArea = true;
 					if ($curTagString)
 						$this->tags[] = new Tag($curTagString);
-					$curTagString .= $ln;
+					$curTagString = $ln;
 				} else {
 					if ($isTagArea) {
 						$curTagString .= " $ln";
