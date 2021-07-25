@@ -203,6 +203,55 @@ class TagTest extends BaseCase {
 						]
 					]
 				],
+				'Inline @param' => [
+					'/** @param int|string $name Description */',
+					[
+						[
+							'name' => 'param',
+							'desc' => 'Description',
+							'props' => [
+								'type' => 'int|string',
+								'name' => 'name'
+							]
+						]
+					]
+				],
+				'Multiline @param' => [
+					<<<DOC
+					/**
+					 * @param Type[] \$a
+					 * @param Type[] \$a Description
+					 * @param Type[] \$a Another
+					 *                   description
+					 */
+					DOC,
+					[
+						[
+							'name' => 'param',
+							'desc' => null,
+							'props' => [
+								'type' => 'Type[]',
+								'name' => 'a'
+							]
+						],
+						[
+							'name' => 'param',
+							'desc' => 'Description',
+							'props' => [
+								'type' => 'Type[]',
+								'name' => 'a'
+							]
+						],
+						[
+							'name' => 'param',
+							'desc' => 'Another description',
+							'props' => [
+								'type' => 'Type[]',
+								'name' => 'a'
+							]
+						]
+					]
+				],
 			];
 		}
 	}
