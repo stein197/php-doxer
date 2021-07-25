@@ -416,6 +416,42 @@ class TagTest extends BaseCase {
 						],
 					]
 				],
+				'Inline @uses' => [
+					'/** @uses URI Description */',
+					[
+						[
+							'name' => 'uses',
+							'desc' => 'Description',
+							'props' => [
+								'uri' => 'URI',
+							]
+						],
+					]
+				],
+				'Multiline @uses' => [
+					<<<DOC
+					/**
+					 * @uses URI Description
+					 * @uses URI
+					 */
+					DOC,
+					[
+						[
+							'name' => 'uses',
+							'desc' => 'Description',
+							'props' => [
+								'uri' => 'URI',
+							]
+						],
+						[
+							'name' => 'uses',
+							'desc' => null,
+							'props' => [
+								'uri' => 'URI',
+							]
+						],
+					]
+				],
 			];
 		}
 	}
