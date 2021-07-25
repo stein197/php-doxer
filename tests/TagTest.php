@@ -252,6 +252,43 @@ class TagTest extends BaseCase {
 						]
 					]
 				],
+				'Inline @return' => [
+					'/** @return Type Desc */',
+					[
+						[
+							'name' => 'return',
+							'desc' => 'Desc',
+							'props' => [
+								'type' => 'Type'
+							]
+						]
+					]
+				],
+				'Multiline @return' => [
+					<<<DOC
+					/**
+					 * @return Type Another
+					 *              description
+					 * @return Type
+					 */
+					DOC,
+					[
+						[
+							'name' => 'return',
+							'desc' => 'Another description',
+							'props' => [
+								'type' => 'Type'
+							]
+						],
+						[
+							'name' => 'return',
+							'desc' => null,
+							'props' => [
+								'type' => 'Type'
+							]
+						],
+					]
+				],
 			];
 		}
 	}
