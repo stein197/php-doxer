@@ -167,6 +167,42 @@ class TagTest extends BaseCase {
 						],
 					]
 				],
+				'Inline @link' => [
+					'/** @link LINK Description */',
+					[
+						[
+							'name' => 'link',
+							'desc' => 'Description',
+							'props' => [
+								'uri' => 'LINK'
+							]
+						]
+					]
+				],
+				'Multiline @link' => [
+					<<<DOC
+					/**
+					 * @link LINK
+					 * @link LINK Description
+					 */
+					DOC,
+					[
+						[
+							'name' => 'link',
+							'desc' => null,
+							'props' => [
+								'uri' => 'LINK'
+							]
+						],
+						[
+							'name' => 'link',
+							'desc' => 'Description',
+							'props' => [
+								'uri' => 'LINK'
+							]
+						]
+					]
+				],
 			];
 		}
 	}
