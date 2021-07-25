@@ -46,7 +46,7 @@ If tag does not match any of these, the it will parsed as `@tag [<description>]`
 (new Stein197\Doxer\Doc('/** @return string A string */'))->getTags()[0]->getProperties(); // Return ['type' => 'string']
 ```
 
-> NOTE! If tag accepts name parameter which will start with `@` sign (@param for example), then after retrieving `name` property the name will be retrieved without leading "$":
+> NOTE! If tag accepts name parameter which will start with `$` sign (@param for example), then after retrieving `name` property the name will be retrieved without leading "$":
 ```php
 echo (new Stein197\Doxer\Doc('/** @param Type $name */'))->getTags()[0]->getProperties()['name']; // "name"
 ```
