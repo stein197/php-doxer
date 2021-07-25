@@ -452,6 +452,43 @@ class TagTest extends BaseCase {
 						],
 					]
 				],
+				'Inline @throws' => [
+					'/** @throws Type Desc */',
+					[
+						[
+							'name' => 'throws',
+							'desc' => 'Desc',
+							'props' => [
+								'type' => 'Type'
+							]
+						]
+					]
+				],
+				'Multiline @throws' => [
+					<<<DOC
+					/**
+					 * @throws Type Another
+					 *              description
+					 * @throws Type
+					 */
+					DOC,
+					[
+						[
+							'name' => 'throws',
+							'desc' => 'Another description',
+							'props' => [
+								'type' => 'Type'
+							]
+						],
+						[
+							'name' => 'throws',
+							'desc' => null,
+							'props' => [
+								'type' => 'Type'
+							]
+						],
+					]
+				],
 			];
 		}
 	}
