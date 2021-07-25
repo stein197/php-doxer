@@ -70,7 +70,7 @@
 				$matches = [];
 				if (preg_match(self::RULES[$this->name], $rest, $matches))
 					foreach ($matches as $key => $value)
-						if (is_string($key)) {
+						if (is_string($key) && $value) {
 							if ($key === 'description') {
 								$this->description = $value;
 							} else {
