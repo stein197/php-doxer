@@ -361,6 +361,61 @@ class TagTest extends BaseCase {
 						],
 					]
 				],
+				'Inline @var' => [
+					'/** @var Type $name Description */',
+					[
+						[
+							'name' => 'var',
+							'desc' => 'Description',
+							'props' => [
+								'type' => 'Type',
+								'name' => 'name'
+							]
+						],
+					]
+				],
+				'Multiline @var' => [
+					<<<DOC
+					/**
+					 * @var Type
+					 * @var Type Description
+					 * @var Type \$name
+					 * @var Type \$name Description
+					 */
+					DOC,
+					[
+						[
+							'name' => 'var',
+							'desc' => null,
+							'props' => [
+								'type' => 'Type',
+							]
+						],
+						[
+							'name' => 'var',
+							'desc' => 'Description',
+							'props' => [
+								'type' => 'Type',
+							]
+						],
+						[
+							'name' => 'var',
+							'desc' => null,
+							'props' => [
+								'type' => 'Type',
+								'name' => 'name'
+							]
+						],
+						[
+							'name' => 'var',
+							'desc' => 'Description',
+							'props' => [
+								'type' => 'Type',
+								'name' => 'name'
+							]
+						],
+					]
+				],
 			];
 		}
 	}
