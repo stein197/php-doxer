@@ -76,7 +76,7 @@ The only class that is supposed to be used is `Stein197\Doxer\Doc`, which accept
 |`getDescription()`|`string`|Returns docblock description or `null` if it's not present|
 |`getTags()`|`Stein197\Doxer\Tag[]`|Returns an array of tags or null if there are no tags present|
 
-The next table contains list of `Stein197\Doxer\Tag[]` public methods:
+The next table contains list of `Stein197\Doxer\Tag` public methods:
 
 |Method|Return type|Description|
 |---|---|---|
