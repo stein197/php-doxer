@@ -1,9 +1,7 @@
 <?php
 	namespace Stein197\Doxer;
 
-use PHPUnit\Framework\IncompleteTestError;
-
-class TagTest extends BaseCase {
+	class TagTest extends BaseCase {
 
 		/**
 		 * @dataProvider data
@@ -26,6 +24,11 @@ class TagTest extends BaseCase {
 			}
 		}
 
+		public function testTag_withWrongSyntax_containsNulls(): void {
+			$tag = (new Doc('/** @param a b c d */'))->getTags()[0];
+			$this->assertNull($tag->getDescription());
+			$this->assertNull($tag->getProperties());
+		}
 
 		/**
 		 * @dataProvider dataRegisteredTags

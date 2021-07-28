@@ -62,6 +62,13 @@ $tag->getDescription(); // "string A string"
 $tag->getProperties(); // null
 ```
 
+If tag to be parsed can have properties but has incorrect syntax, properties and description will be nulls:
+```php
+$tag = (new Stein197\Doxer\Doc('/** @param a b c d */'))->getTags()[0];
+$tag->getDescription(); // null
+$tag->getProperties(); // null
+```
+
 > NOTE! If tag accepts name property which will start with `$` sign (`@param`, `@var` tags), then after retrieving `name` property the name will be retrieved without leading "$":
 ```php
 $doc = new Stein197\Doxer\Doc('/** @param Type $arg1 */');
@@ -82,7 +89,7 @@ The next table contains list of `Stein197\Doxer\Tag` public methods:
 |---|---|---|
 |`getDescription()`|`string`|Returns tag description or `null` if it's not present|
 |`getName()`|`string`|Returns the name of a tag without leading `@` sign|
-|`getProperties()`|`string[]`|Returns an array of tag properties|
+|`getProperties()`|`string[]`|Returns an array of tag properties or null if there are no properties|
 
 ## Tests
 To run unit tests call the `test` composer script:
