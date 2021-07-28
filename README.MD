@@ -81,7 +81,7 @@ The next table contains list of `Stein197\Doxer\Tag` public methods:
 |Method|Return type|Description|
 |---|---|---|
 |`getDescription()`|`string`|Returns tag description or `null` if it's not present|
-|`getName()`|`string`|Returns the name of a tag|
+|`getName()`|`string`|Returns the name of a tag without leading `@` sign|
 |`getProperties()`|`string[]`|Returns an array of tag properties|
 
 ## Tests
