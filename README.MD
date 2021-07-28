@@ -1,9 +1,12 @@
 # PHP docblock comment parser
 Simple PHP documentation comment parser. First, install it via composer as follows:
+
 ```
 composer require stein197/doxer
 ```
+
 And then use it like this:
+
 ```php
 $docblock = <<<DOC
 /**
@@ -28,7 +31,9 @@ foreach ($tags as $tag) {
 	}
 }
 ```
-Each docblock comment can have tags which start with `@` sign and each tag can have an array of properties and an optional description. The next list shows which tags are parsed in a "special" way, i.e. tags that can have properties:
+
+Each docblock comment can have tags which start with `@` sign and each tag can have an array of properties and an optional description. The next list shows which tags are currently supported:
+
 - @author `<name>` `[<email>]`
 - @deprecated `[<version>]` `[<description>]`
 - @license `[<url>]` `[<description>]`
@@ -41,15 +46,43 @@ Each docblock comment can have tags which start with `@` sign and each tag can h
 - @uses `<uri>` `[<description>]`
 - @throws `<type>` `[<description>]`
 
-If tag does not match any of these, the it will parsed as `@tag [<description>]`. So for example if tag "@return string A string" is parsed, it's properties will be only `type`:
+So for example if tag "@return string A string" is parsed, it's properties will only contain `type` entry:
+
 ```php
-(new Stein197\Doxer\Doc('/** @return string A string */'))->getTags()[0]->getProperties(); // Return ['type' => 'string']
+$doc = new Stein197\Doxer\Doc('/** @return string A string */');
+$doc->getDescription(); // "A string"
+$doc->getTags(); // [['type' => 'string']]
 ```
 
-> NOTE! If tag accepts name parameter which will start with `$` sign (@param for example), then after retrieving `name` property the name will be retrieved without leading "$":
+But if the tag does not match any of predefined, then it will be parsed as `@tag [<description>]`. So for example if tag "@nonexistent string A string" is parsed, all it will contain is a description:
+
 ```php
-echo (new Stein197\Doxer\Doc('/** @param Type $name */'))->getTags()[0]->getProperties()['name']; // "name"
+$doc = new Stein197\Doxer\Doc('/** @nonexistent string A string */');
+$doc->getDescription(); // "string A string"
+$doc->getTags(); // null
 ```
+
+> NOTE! If tag accepts name property which will start with `$` sign (`@param`, `@var` tags), then after retrieving `name` property the name will be retrieved without leading "$":
+```php
+$doc = new Stein197\Doxer\Doc('/** @param Type $arg1 */');
+$doc->getTags()[0]; // ['name' => 'arg1']
+```
+
+## API
+The only class that is supposed to be used is `Stein197\Doxer\Doc`, which accepts a docblock string as the only constructor parameter. Then the next methods could be used:
+
+|Method|Return type|Description|
+|---|---|---|
+|`getDescription()`|`string`|Returns docblock description or `null` if it's not present|
+|`getTags()`|`Stein197\Doxer\Tag[]`|Returns an array of tags or null if there are no tags present|
+
+The next table contains list of `Stein197\Doxer\Tag[]` public methods:
+
+|Method|Return type|Description|
+|---|---|---|
+|`getDescription()`|`string`|Returns tag description or `null` if it's not present|
+|`getName()`|`string`|Returns the name of a tag|
+|`getProperties()`|`string[]`|Returns an array of tag properties|
 
 ## Tests
 To run unit tests call the `test` composer script:
