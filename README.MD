@@ -49,23 +49,23 @@ Each docblock comment can have tags which start with `@` sign and each tag can h
 So for example if tag "@return string A string" is parsed, it's properties will only contain `type` entry:
 
 ```php
-$doc = new Stein197\Doxer\Doc('/** @return string A string */');
-$doc->getDescription(); // "A string"
-$doc->getTags(); // [['type' => 'string']]
+$returnTag = (new Stein197\Doxer\Doc('/** @return string A string */'))->getTags()[0];
+$returnTag->getDescription(); // "A string"
+$returnTag->getProperties(); // ['type' => 'string']
 ```
 
 But if the tag does not match any of predefined, then it will be parsed as `@tag [<description>]`. So for example if tag "@nonexistent string A string" is parsed, all it will contain is a description:
 
 ```php
-$doc = new Stein197\Doxer\Doc('/** @nonexistent string A string */');
-$doc->getDescription(); // "string A string"
-$doc->getTags(); // null
+$tag = (new Stein197\Doxer\Doc('/** @nonexistent string A string */'))->getTags()[0];
+$tag->getDescription(); // "string A string"
+$tag->getProperties(); // null
 ```
 
 > NOTE! If tag accepts name property which will start with `$` sign (`@param`, `@var` tags), then after retrieving `name` property the name will be retrieved without leading "$":
 ```php
 $doc = new Stein197\Doxer\Doc('/** @param Type $arg1 */');
-$doc->getTags()[0]; // ['name' => 'arg1']
+$doc->getTags()[0]->getProperties(); // ['name' => 'arg1']
 ```
 
 ## API
