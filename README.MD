@@ -21,13 +21,14 @@ $docblock = <<<DOC
  * 
 DOC;
 $doc = new Stein197\Doxer\Doc($docblock);
-echo $doc->getDescription(); // "Description. Another line of description."
-$tags = $doc->getTags(); // Returns and array of Stein197\Doxer\Tag instances
-foreach ($tags as $tag) {
-	echo $tag->getDescription(); // Handles multiple lines of description
-	echo $tag->getName(); // Returns the name of the tag without "@" char
-	foreach ($tag->getProperties() as $name => $value) {
-		echo "$name=$value"; // Tag's properties such as "version", "type", etc.
+if ($doc->exists()) { // Checks for existance
+	$doc->getDescription(); // "Description. Another line of description."
+	foreach ($doc->getTags() as $tag) { // Returns and array of Stein197\Doxer\Tag instances
+		$tag->getDescription(); // Handles multiple lines of description
+		$tag->getName(); // Returns the name of the tag without "@" char
+		foreach ($tag->getProperties() as $name => $value) { // Returns an array of properties
+			"$name=$value"; // Tag's properties such as "version", "type", etc.
+		}
 	}
 }
 ```
@@ -81,7 +82,8 @@ The only class that is supposed to be used is `Stein197\Doxer\Doc`, which accept
 |Method|Return type|Description|
 |---|---|---|
 |`getDescription()`|`string`|Returns docblock description or `null` if it's not present|
-|`getTags()`|`Stein197\Doxer\Tag[]`|Returns an array of tags or null if there are no tags present|
+|`getTags(?string $name = null)`|`Stein197\Doxer\Tag[]`|Returns an array of tags or null if there are no tags present. If optional parameter is passed then only tags with matching name will be retrieved|
+|`exists()`|`bool`|Returns `true` if doc exists. Even empty description block treats as existing one|
 
 The next table contains list of `Stein197\Doxer\Tag` public methods:
 
