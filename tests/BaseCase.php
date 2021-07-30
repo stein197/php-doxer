@@ -3,7 +3,6 @@
 
 	use PHPUnit\Framework\TestCase;
 
-	// TODO: Add separate tests for each tag type
 	class BaseCase extends TestCase {
 
 		public final function data(): array {
