@@ -28,11 +28,20 @@
 		}
 
 		/**
-		 * Returns docblock tags in order they declared.
+		 * Returns docblock tags in order they declared. Name can be passed to retrieve tags with specified name.
+		 * @param string|null $name The name with which the tags will be retrieved.
 		 * @return null|Tag[] Array of tags or null if not found.
 		 */
-		public function getTags(): ?array {
-			return $this->tags;
+		public function getTags(?string $name = null): ?array {
+			return $name ? array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) : $this->tags;
+		}
+
+		/**
+		 * Checks if documentation comment exists.
+		 * @return bool If description or tags exist. Even empty description considered as doc existance.
+		 */
+		public function exists(): bool {
+			return $this->getDescription() !== null || $this->getTags();
 		}
 
 		protected function parse(string $doc): void {

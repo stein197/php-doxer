@@ -1,6 +1,7 @@
 <?php
 	namespace Stein197\Doxer;
 
+	// TODO: Tests for exists() and getTags(string)
 	class DocTest extends BaseCase {
 
 		/**
