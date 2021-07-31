@@ -6,6 +6,7 @@
 ### Added
 - `Stein197\Doxer\Doc::exists()` method
 - Extra filter parameter to `Stein197\Doxer\Doc::getTags()` method
+- Code coverage tests
 
 ## [1.0.0](../../tree/1.0.0) - 2021-07-25
 Release
