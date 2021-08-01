@@ -20,7 +20,7 @@
 		 * Creates parsed docblock info from docblock comment
 		 * @param string $doc Docblock comment
 		 */
-		public function __construct(string $doc) {
+		public function __construct(?string $doc) {
 			if ($doc)
 				$this->parse($doc);
 			else
