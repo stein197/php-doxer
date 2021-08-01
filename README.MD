@@ -92,6 +92,7 @@ The next table contains list of `Stein197\Doxer\Tag` public methods:
 |`getDescription()`|`string`|Returns tag description or `null` if it's not present|
 |`getName()`|`string`|Returns the name of a tag without leading `@` sign|
 |`getProperties()`|`string[]`|Returns an array of tag properties or null if there are no properties|
+|`getProperty(string $name)`|`string`|Returns single property value or null if there is no such property|
 
 ## Tests
 To run unit tests call the `test` composer script:

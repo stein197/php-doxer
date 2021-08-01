@@ -49,12 +49,21 @@
 		}
 
 		/**
-		 * Retuens tag's properties. Only registered tags can have properties. For example for `@param` tag there are
+		 * Returns tag's properties. Only registered tags can have properties. For example for `@param` tag there are
 		 * two properties - `type` of the param and optionally the `name`.
-		 * @return null|array Tag's properties.
+		 * @return null|string[] Tag's properties.
 		 */
 		public function getProperties(): ?array {
 			return $this->properties;
+		}
+
+		/**
+		 * Returns tag's single property. Only registered tags can have properties.
+		 * @param string $name Name of the property to be retuned.
+		 * @return string|null Value of the property or `null` if there is no such a property.
+		 */
+		public function getProperty(string $name): ?string {
+			return @$this->properties[$name];
 		}
 
 		protected function parse(string $doc): void {

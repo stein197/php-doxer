@@ -16,6 +16,7 @@
 					if ($tag->getProperties()) {
 						foreach ($tag->getProperties() as $name => $value) {
 							$this->assertEquals($curTagData['props'][$name], $value);
+							$this->assertEquals($curTagData['props'][$name], $tag->getProperty($name));
 						}
 					}
 				}
@@ -28,6 +29,11 @@
 			$tag = (new Doc('/** @param a b c d */'))->getTags()[0];
 			$this->assertNull($tag->getDescription());
 			$this->assertNull($tag->getProperties());
+		}
+
+		public function testGetProperty_whenPropertyDoesNotExist_returnsNull(): void {
+			$doc = new Doc('/** @var */');
+			$this->assertNull($doc->getTags()[0]->getProperty('nonexistent'));
 		}
 
 		/**
