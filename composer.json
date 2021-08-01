@@ -24,7 +24,9 @@
 			"email": "nil20122013@gmail.com"
 		}
 	],
-	"require": {},
+	"require": {
+		"php": ">=7.4"
+	},
 	"scripts": {
 		"test": "phpunit"
 	},
