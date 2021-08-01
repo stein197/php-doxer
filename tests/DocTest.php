@@ -44,4 +44,19 @@
 			foreach ($doc->getTags('a') as $tag)
 				$this->assertEquals('a', $tag->getName());
 		}
+
+		public function testGetTags_withFilter_returnsInOrder(): void {
+			$text = <<<DOC
+			/**
+			 * Desc
+			 * @a A1
+			 * @a A2
+			 * @b B1
+			 * @a A3
+			 */
+			DOC;
+			$doc = new Doc($text);
+			$this->assertEquals([0, 1, 2], array_keys($doc->getTags('a')));
+			$this->assertEquals([0], array_keys($doc->getTags('b')));
+		}
 	}

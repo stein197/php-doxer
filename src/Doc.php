@@ -33,7 +33,7 @@
 		 * @return null|Tag[] Array of tags or null if not found.
 		 */
 		public function getTags(?string $name = null): ?array {
-			return $name ? array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) : $this->tags;
+			return $name ? array_values(array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name)) : $this->tags;
 		}
 
 		protected function parse(string $doc): void {
