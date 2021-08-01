@@ -36,14 +36,6 @@
 			return $name ? array_filter($this->tags, fn (Tag $tag): bool => $tag->getName() === $name) : $this->tags;
 		}
 
-		/**
-		 * Checks if documentation comment exists.
-		 * @return bool If description or tags exist. Even empty description considered as doc existance.
-		 */
-		public function exists(): bool {
-			return $this->getDescription() !== null || $this->getTags();
-		}
-
 		protected function parse(string $doc): void {
 			$lines = self::lines($doc);
 			$isTagArea = false;

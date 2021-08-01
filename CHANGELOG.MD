@@ -4,7 +4,6 @@
 
 ## [1.1.0](../../compare/1.0.0...1.1.0) - XXXX-XX-XX
 ### Added
-- `Stein197\Doxer\Doc::exists()` method
 - Extra filter parameter to `Stein197\Doxer\Doc::getTags()` method
 - Code coverage tests
 
