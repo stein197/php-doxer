@@ -2,7 +2,7 @@
 ## [Unreleased]
 - Add @example, @method and @property tag parsing rules
 
-## [1.1.0](../../compare/1.0.0...1.1.0) - XXXX-XX-XX
+## [1.1.0](../../compare/1.0.0...1.1.0) - 2021-08-01
 ### Added
 - Extra filter parameter to `Stein197\Doxer\Doc::getTags()` method
 - Code coverage tests
