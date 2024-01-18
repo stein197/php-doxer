@@ -1,15 +1,18 @@
 <?php
-	namespace Stein197\Doxer;
+namespace Stein197\Doxer;
 
-	trait Descriptable {
+/**
+ * Use this trait when class has a description.
+ */
+trait Descriptable {
 
-		protected ?string $description = null;
+	private ?string $description = null;
 
-		/**
-		 * Returns comment description
-		 * @return null|string Description
-		 */
-		public function getDescription(): ?string {
-			return $this->description;
-		}
+	/**
+	 * Returns description.
+	 * @return null|string Description.
+	 */
+	public function getDescription(): ?string {
+		return $this->description;
 	}
+}
